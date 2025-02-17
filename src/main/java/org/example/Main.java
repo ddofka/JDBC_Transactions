@@ -23,10 +23,9 @@ public class Main {
         System.out.println("3. Parašyti programą, leidžiančią įvesti naujus darbuotojus");
 
         Scanner sc = new Scanner(System.in);
-        boolean isActive = true;
         // asmenskodas-vardas-pavarde-dribanuo-gimimometai-pareigos-skyrius_pavadinimas-projektas_id
 
-        while (isActive){
+        while (true){
             System.out.println("Ar norite įvesti darbuotoją? taip/ne");
             String answer = sc.nextLine();
             if (answer.equalsIgnoreCase("ne")){
@@ -50,11 +49,10 @@ public class Main {
             int projectID = Integer.parseInt(sc.nextLine());
             insertWorkerPreparedStatement(dbConnection, pc, name, lastname, employedWhen, dateOfBirth,
                     position, depName, projectID);
-            isActive = false;
         }
 
         System.out.println("4. Papildyti programą galimybe priskirti darbuotoją projektui");
-        while (isActive){
+        while (true){
             System.out.println("Ar norite priskirti darbuotoją projektui? taip/ne: ");
             String answer = sc.nextLine();
             if (answer.equalsIgnoreCase("ne")){
@@ -106,6 +104,7 @@ public class Main {
             System.out.println(e);
         } finally {
             connection.setAutoCommit(true);
+            System.out.println("Worker added to databse!");
         }
     }
 
